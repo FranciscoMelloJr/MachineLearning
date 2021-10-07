@@ -4,20 +4,27 @@ import java.io.File;
 import java.text.DecimalFormat;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 public class PrincipalController {
 	
-//	@FXML
-//	public void extrair() {
-//		ExtratorCaracteristicas.extrair(true);
-//	}
-	
-	//MÉTODO QUE CHAMA O ALGORITMO
+	@FXML private ImageView imageView;
+	@FXML private Label b1;
+	@FXML private Label b2;
+	@FXML private Label b3;
+	@FXML private Label h1;
+	@FXML private Label h2;
+	@FXML private Label h3;
+	@FXML private Label naiveBayesBart;
+	@FXML private Label naiveBayesHomer;
+	@FXML private Label j48Bart;
+	@FXML private Label j48Homer;
 
-	private double[] caracteristicasImgSel = {0,0,0,0,0,0};
 	private DecimalFormat df = new DecimalFormat("##0.0000");
+	private double[] caracteristicasImgSel = {0,0,0,0,0,0};
 
 	@FXML
 		public void classificar() {
@@ -25,7 +32,17 @@ public class PrincipalController {
 			double[] nb = AprendizagemBayesiana.naiveBayes(caracteristicasImgSel);
 			naiveBayesBart.setText("Bart: "+df.format(nb[0])+"%");
 			naiveBayesHomer.setText("Homer: "+df.format(nb[1])+"%");
+			//*********J48
+//			double[] j48 = ArvoresDeDecisao.j48(caracteristicasImgSel);
+//			j48Bart.setText("Bart: "+df.format(j48)+"%");
+//			j48Homer.setText("Homer: "+df.format(j48[1])+"%");
 		}
+	
+	@FXML
+	public void extrair() {
+		ExtratorCaracteristicas.extrair(false);
+}
+	
 	//gui para carregar imagem na tela (e extrair caracteristicas dela)*********************************
 	@FXML
 		public void selecionaImagem() {
@@ -35,7 +52,7 @@ public class PrincipalController {
 				imageView.setImage(img);
 				imageView.setFitWidth(img.getWidth());
 				imageView.setFitHeight(img.getHeight());
-				caracteristicasImgSel = ExtractCaracteristicas.extraiCaracteristicas(f, false);
+				caracteristicasImgSel = ExtratorCaracteristicas.extraiCaracteristicas(f, false);
 				b1.setText("Laranja Camisa: "+df.format(caracteristicasImgSel[0]));
 				b2.setText("Azul Calção: "   +df.format(caracteristicasImgSel[1]));
 				b3.setText("Azul Sapato: "   +df.format(caracteristicasImgSel[2]));

@@ -19,9 +19,9 @@ public class AprendizagemBayesiana {
 				instancias.setClassIndex(instancias.numAttributes()-1);
 				
 				//Classifica com base nas características da imagem selecionada
-				AprendizagemBayesiana nb = new AprendizagemBayesiana();
+				NaiveBayes nb = new NaiveBayes();
 				nb.buildClassifier(instancias);//aprendizagem (tabela de probabilidades)
-				
+
 //				MultilayerPerceptron mlp = new MultilayerPerceptron();
 //				mlp.setLearningRate(0.001);
 //				mlp.setTrainingTime(500);
@@ -38,11 +38,10 @@ public class AprendizagemBayesiana {
 				novo.setValue(5, caracteristicas[5]);
 				
 				retorno = nb.distributionForInstance(novo);
-				
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			return retorno;
 		}
-
 	}

@@ -3,16 +3,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
    <children>
       <BorderPane prefHeight="840.0" prefWidth="840.0">
          <top>
@@ -26,7 +26,7 @@
                         <Font name="Calibri" size="12.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="Selecionar Imagem">
+                  <Button mnemonicParsing="false" onAction="#selecionaImagem" prefHeight="25.0" prefWidth="120.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="Selecionar Imagem">
                      <HBox.margin>
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
@@ -34,7 +34,7 @@
                         <Font name="Calibri" size="12.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="Classificar">
+                  <Button mnemonicParsing="false" onAction="#classificar" prefHeight="25.0" prefWidth="70.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="Classificar">
                      <HBox.margin>
                         <Insets left="10.0" top="15.0" />
                      </HBox.margin>
@@ -45,20 +45,10 @@
                </children>
             </HBox>
          </top>
-         <left>
-            <Pane maxHeight="780.0" maxWidth="420.0" prefHeight="780.0" prefWidth="420.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="780.0" fitWidth="420.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-               <BorderPane.margin>
-                  <Insets left="10.0" />
-               </BorderPane.margin>
-            </Pane>
-         </left>
          <right>
-            <VBox prefHeight="780.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+            <VBox maxHeight="500.0" prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+                  <Insets bottom="250.0" left="5.0" right="10.0" top="5.0" />
                </BorderPane.margin>
                <children>
                   <TitledPane animated="false" text="Caracteristícas">
@@ -77,17 +67,17 @@
                                                 <Insets bottom="5.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label text="Camisa Laranja:">
+                                          <Label fx:id="b1" prefHeight="17.0" prefWidth="150.0" text="Camisa Laranja:">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" top="5.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label text="Calção Azul:">
+                                          <Label fx:id="b2" prefHeight="17.0" prefWidth="150.0" text="Calção Azul:">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label text="Sapato Azul:">
+                                          <Label fx:id="b3" prefHeight="17.0" prefWidth="150.0" text="Sapato Azul:">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" />
                                              </VBox.margin>
@@ -104,17 +94,17 @@
                                                 <Insets bottom="5.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label text="Calça Azul:">
+                                          <Label fx:id="h1" prefHeight="17.0" prefWidth="150.0" text="Calça Azul:">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" top="5.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label text="Boca Marrom:">
+                                          <Label fx:id="h2" prefHeight="17.0" prefWidth="150.0" text="Boca Marrom:">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label text="Sapato Preto:">
+                                          <Label fx:id="h3" prefHeight="17.0" prefWidth="150.0" text="Sapato Preto:">
                                              <VBox.margin>
                                                 <Insets bottom="5.0" />
                                              </VBox.margin>
@@ -136,7 +126,7 @@
                            <children>
                               <VBox layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="370.0">
                                  <children>
-                                    <Label text="Bart:">
+                                    <Label fx:id="naiveBayesBart" prefHeight="17.0" prefWidth="200.0" text="Bart:">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="10.0" top="10.0" />
                                        </VBox.margin>
@@ -144,7 +134,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Homer:">
+                                    <Label fx:id="naiveBayesHomer" prefHeight="17.0" prefWidth="200.0" text="Homer:">
                                        <VBox.margin>
                                           <Insets left="10.0" />
                                        </VBox.margin>
@@ -161,13 +151,13 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </TitledPane>
-                  <TitledPane animated="false" text="Classificação por Árvore de decisão (J48)">
+                  <TitledPane animated="false" expanded="false" text="Classificação por Árvore de decisão (J48)">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="80.0" prefWidth="388.0">
                            <children>
                               <VBox layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="370.0">
                                  <children>
-                                    <Label text="Bart:">
+                                    <Label fx:id="j48Bart" prefHeight="17.0" prefWidth="200.0" text="Bart:">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="10.0" top="10.0" />
                                        </VBox.margin>
@@ -175,7 +165,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Homer:">
+                                    <Label fx:id="j48Homer" prefHeight="17.0" prefWidth="200.0" text="Homer:">
                                        <VBox.margin>
                                           <Insets left="10.0" />
                                        </VBox.margin>
@@ -195,6 +185,16 @@
                </children>
             </VBox>
          </right>
+         <left>
+            <ScrollPane prefHeight="590.0" prefWidth="420.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="200.0" left="10.0" />
+               </BorderPane.margin>
+               <content>
+                  <ImageView fx:id="imageView" fitHeight="572.0" fitWidth="410.0" pickOnBounds="true" preserveRatio="true" />
+               </content>
+            </ScrollPane>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>
